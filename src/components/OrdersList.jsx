@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 function Orders() {
@@ -25,7 +24,7 @@ function Orders() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:4444/products");
+      const response = await fetch("http://localhost:4444/products");
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -33,17 +32,8 @@ function Orders() {
     }
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-   await axios.post("http://localhost:4444/orders" , 
-   {
-    clientName,
-    phone : phoneNumber,
-    email,
-    address,
-    totalPrice : 11 , 
-    products: orders,
-  })
     // Here you would typically send this data to your backend
     console.log("Order submitted:", {
       clientName,
