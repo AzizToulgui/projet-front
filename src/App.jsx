@@ -1,6 +1,8 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import ProductList from "./components/ProductList"
+import OrdersList from "./components/OrdersList"
+
 import CreateProduct from "./components/CreateProduct"
 import Orders from "./components/Orders"
 import "./App.css"
@@ -28,6 +30,8 @@ function App() {
               }
             />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/list" element={<OrdersList />} />
+            
           </Routes>
         </main>
       </div>
