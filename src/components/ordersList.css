@@ -141,6 +141,48 @@
     background-color: #f1f5f9;
   }
   
+  /* Icon styles */
+  .icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    position: relative;
+  }
+  
+  .phone-icon::before {
+    content: "📞";
+    font-size: 14px;
+  }
+  
+  .email-icon::before {
+    content: "✉️";
+    font-size: 14px;
+  }
+  
+  .dollar-icon::before {
+    content: "$";
+    font-weight: bold;
+  }
+  
+  .package-icon::before {
+    content: "📦";
+    font-size: 14px;
+  }
+  
+  .chevron-icon {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #64748b;
+    transition: transform 0.3s ease;
+  }
+  
+  .chevron-icon.expanded {
+    transform: rotate(180deg);
+  }
+  
   @media (max-width: 600px) {
     .order-summary {
       flex-direction: column;

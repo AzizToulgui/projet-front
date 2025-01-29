@@ -4,6 +4,11 @@ import axios from "axios";
 import { useState } from "react"
 import { ChevronDown, ChevronUp, Phone, Mail, DollarSign, Package } from "lucide-react"
 
+
+
+
+
+
 const OrderItem = ({
   order,
   isExpanded,
@@ -16,21 +21,21 @@ const OrderItem = ({
           <span className="client-name">{order.clientName}</span>
           <div className="contact-details">
             <span>
-              <Phone size={14} /> {order.phone}
+              <span className="icon phone-icon"></span> {order.phone}
             </span>
             <span>
-              <Mail size={14} /> {order.email}
+              <span className="icon email-icon"></span> {order.email}
             </span>
           </div>
         </div>
         <div className="order-meta">
           <span className="total-price">
-            <DollarSign size={14} /> {order.totalPrice.toFixed(2)}
+            <span className="icon dollar-icon"></span> {order.totalPrice.toFixed(2)}
           </span>
           <span className="product-count">
-            <Package size={14} /> {order.products.length}
+            <span className="icon package-icon"></span> {order.products.length}
           </span>
-          {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          <span className={`icon chevron-icon ${isExpanded ? "expanded" : ""}`}></span>
         </div>
       </div>
       {isExpanded && (
@@ -58,6 +63,7 @@ const OrderItem = ({
 }
 
 const OrdersList = () => {
+
   const [orders, setOrders] = useState([
     {
       clientName: "John Doe",
@@ -141,7 +147,6 @@ const OrdersList = () => {
     fetchorders()
   } , [])
 
-
   const [expandedOrderId, setExpandedOrderId] = useState<number | null>(null)
 
   const toggleOrderExpansion = (orderId) => {
@@ -164,5 +169,4 @@ const OrdersList = () => {
 }
 
 export default OrdersList
-
 
