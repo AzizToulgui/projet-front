@@ -2,15 +2,40 @@ import React, { useState, useEffect } from "react"
 
 function Orders() {
   const [orders, setOrders] = useState([])
+  const [products, setProducts] = useState([])
   const [clientName, setClientName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [email, setEmail] = useState("")
   const [address, setAddress] = useState("")
 
   useEffect(() => {
-    const storedOrders = JSON.parse(localStorage.getItem("orders") || "[]")
-    setOrders(storedOrders)
+    setOrders(JSON.parse(localStorage.getItem("orders") || "[]"))
+    fetchProducts()
   }, [])
+
+  const handleAddToOrder = (ref ) => {
+    const product = arr.find((e)=> e.ref === ref ) 
+    const orders = JSON.parse(localStorage.getItem("orders") || "[]")
+    orders.push(product)
+    localStorage.setItem("orders", JSON.stringify(orders))
+    setOrders(orders)
+    alert(`${product.name} added to orders!`)
+  }
+
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:4444/products", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      const data = await response.json()
+      setProducts(data)
+    } catch (error) {
+      console.error("Error fetching products:", error)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -67,6 +92,13 @@ function Orders() {
           <label htmlFor="address">Address:</label>
           <textarea id="address" value={address} onChange={(e) => setAddress(e.target.value)} required></textarea>
         </div>
+        <select onChange={(e)=>{
+          handleAddToOrder(e.target.value)
+        }}>
+           {products.map((e)=>{
+            return <option value={e.ref}>{e.name}</option>
+           })}
+        </select>
         <button type="submit" className="submit-order">
           Submit Order
         </button>
