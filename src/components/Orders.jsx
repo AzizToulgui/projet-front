@@ -25,11 +25,7 @@ function Orders() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:4444/products", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      const response = await fetch("http://localhost:4444/products")
       const data = await response.json()
       setProducts(data)
     } catch (error) {
