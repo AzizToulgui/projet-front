@@ -14,7 +14,7 @@ function Orders() {
   }, [])
 
   const handleAddToOrder = (ref ) => {
-    const product = arr.find((e)=> e.ref === ref ) 
+    const product = products.find((e)=> e.ref === ref ) 
     const orders = JSON.parse(localStorage.getItem("orders") || "[]")
     orders.push(product)
     localStorage.setItem("orders", JSON.stringify(orders))
