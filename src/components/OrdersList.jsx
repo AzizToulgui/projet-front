@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react"
 import "./ordersList.css"
 import axios from "axios";
-import { useState } from "react"
-import { ChevronDown, ChevronUp, Phone, Mail, DollarSign, Package } from "lucide-react"
-
-
-
-
 
 
 const OrderItem = ({
@@ -30,8 +24,8 @@ const OrderItem = ({
         </div>
         <div className="order-meta">
           <span className="total-price">
-            <span className="icon dollar-icon"></span> {order.totalPrice.toFixed(2)}
-          </span>
+            77
+=          </span>
           <span className="product-count">
             <span className="icon package-icon"></span> {order.products.length}
           </span>
@@ -147,7 +141,7 @@ const OrdersList = () => {
     fetchorders()
   } , [])
 
-  const [expandedOrderId, setExpandedOrderId] = useState<number | null>(null)
+  const [expandedOrderId, setExpandedOrderId] = useState(null)
 
   const toggleOrderExpansion = (orderId) => {
     setExpandedOrderId(expandedOrderId === orderId ? null : orderId)
