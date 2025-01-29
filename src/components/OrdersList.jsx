@@ -37,7 +37,6 @@ const OrdersList = () => {
             <span>{order.clientName}</span>
             <span>{order.phone}</span>
             <span>{order.email}</span>
-            <span>${order.totalPrice.toFixed(2)}</span>
           </div>
           {expandedOrderId === order.id && (
             <div className="order-details">
